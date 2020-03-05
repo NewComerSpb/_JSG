@@ -15,3 +15,5 @@ console.log(helpers.dateFormat(new Date()));
 
 // 2. Установка  модулей
 // npm i имя макета
+
+console.log('test');
