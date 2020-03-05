@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Работа с классами и атрибутами</title>
+    <style>
+        table {
+            border: 1px solid #111;
+            border-collapse: collapse;
+        }
+
+        td {
+            border: 1px solid #111;
+            padding: 10px;
+        }
+
+        .no-available {
+            color: #999;
+        }
+
+        .selected {
+            background: #ff0;
+        }
+
+        .selected:hover {
+            background: rgba(255, 225, 0, 0.37);
+        }
+
+        tr:hover {
+            cursor: pointer;
+            background: #bebebe;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <h1>Список товаров</h1>
+    <table>
+<!--        <tr v-for="product of products" v-bind:class="{'no-available':!product.onStock}">-->
+        <tr v-for="product of products" v-bind:class="getItemClass(product)">
+            <td>
+                <input
+                        type="checkbox"
+                        :disabled="!product.onStock"
+                        v-model = 'cart'
+                        :value = 'product'
+                >
+            </td>
+            <td>{{product.title}}</td>
+            <td>{{product.price}}</td>
+            <td v-if="product.onStock"> Есть в наличии </td>
+            <td v-else> Отстутствует на складе </td>
+        </tr>
+    </table>
+
+
+        <h2>Корзина товаров</h2>
+        <ul>
+            <li v-for ='item of cart'>
+                {{item.title}}
+                <button @click = 'remove(item)'>&times;</button>
+            </li>
+        </ul>
+        Итого: {{total}} руб.
+
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    "use strict";
+    const products = [
+        { title: "Название товара", price: 100500, onStock: true },
+        { title: "Ещё один", price: 9999, onStock: false },
+        { title: "И ещё чего-нибудь", price: 1000, onStock: true },
+        { title: "Пример товара", price: 8000, onStock: true },
+    ];
+
+    new Vue({
+        el: '#app',
+        data: {
+            products,
+            cart: [],
+        },
+        computed: {
+            total() {
+                let total = 0;
+                for (const item of this.cart){
+                    total += item.price;
+                }
+                return total;
+            }
+        },
+        methods: {
+            remove(item) {
+            const index = this.cart.indexOf(item);
+            this.cart.splice(index,1);
+            },
+            getItemClass(item) {
+                return {
+                    'selected': this.cart.includes(item),
+                    'no-available': !item.onStock,
+                }
+            }
+        }
+    });
+
+
+
+</script>
+</body>
+</html>

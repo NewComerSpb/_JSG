@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirm</title>
+    <script>
+        // confirm вернёт true или false
+        let bool = confirm("Подтвердите удаление чего-нибудь");
+        alert(bool);
+
+        let isAdult = confirm("Подтвердите, что вам более 18 лет");
+        if (isAdult) {
+            alert("Добро пожаловать");
+        } else {
+            alert("Давай, до свидания!");
+            // перенаправили пользователя на другой сайт
+            window.location = "https://www.deti.fm/";
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

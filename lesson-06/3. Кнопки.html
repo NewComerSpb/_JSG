@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		window.onload = function () {
+			let buttons = document.querySelectorAll('button');
+
+			let clickHandler = function () {
+				this.style.color = 'red';
+			};
+
+			for (let i=0; i<buttons.length; i++) {
+				buttons[i].onclick = clickHandler;
+			};
+
+		}
+	</script>
+</head>
+<body>
+	<button>Кнопка 1</button>
+	<button>А это кнопка 2</button>
+	<button>3</button>
+	<button>И здесь есть номер 4</button>
+	<button>5</button>
+</body>
+</html>

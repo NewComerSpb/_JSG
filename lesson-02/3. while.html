@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Цикл while</title>
+    <script>
+        let n = prompt("Введите число") * 1;
+        if (n > 1) {
+            let sum = 0;
+            while (n > 0) {
+                sum = sum + n;
+                n = n - 1; // n-- или n -= 1
+                console.log("После итерации n = " + n + ", sum = " + sum);
+            }
+            alert("Сумма чисел " + sum);
+        } else {
+            alert("Введите число больше 1");
+        }
+
+
+        let students = ["Сергей", "Константин", "Валерий", "Алексей", "Дмитрий", "Александр", "Андрей"];
+        students.sort();
+        let counter = 0;
+        while (counter < students.length) {
+            document.write(students[counter] + "<br>");
+            counter++; // counter = counter + 1
+        }
+
+        let numbers = [5, 10, -5, 30, 1];
+        let sum = 0;
+        let i = 0;
+        while (i < numbers.length) {
+            console.log("i = " + i + ", sum = " + sum + ", numbers[i] = " + numbers[i]);
+            if (numbers[i] > 0) {
+                sum = sum + numbers[i];
+                console.log("Сложили числа, результат: " + sum )
+            }
+            i++;
+        }
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

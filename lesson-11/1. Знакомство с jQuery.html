@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button>Кнопка</button>
+<button>Кнопка</button>
+<button>Кнопка</button>
+<button>Кнопка</button>
+
+<div id="block"></div>
+
+<script src="jquery-3.4.1.min.js"></script>
+
+<script>
+    $(function () {
+        const button = jQuery('button');
+        button.text('Hello jQuery');
+        button.css('color','red');
+    //     button.css({
+    //         color: 'red',
+    //         background: 'green'
+    //     });
+
+
+
+
+    button.click(function () {
+       // alert('Test');
+        //при вызове функции jQuery можно передать уже найденный элемент, тогда функция вернет новую коллекцию с одним этим элементом и все метоны
+        // this в обработчиках - это обычный дом-объект
+
+        $(this).css('color','blue');
+
+    })
+
+
+    $('#block')
+        .text('Hello World')
+        .css('opacity','0.1')
+        .animate({opacity:1}, 900);
+
+
+
+
+
+     })
+
+
+</script>
+
+</body>
+</html>

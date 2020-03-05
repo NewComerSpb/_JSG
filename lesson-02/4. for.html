@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Цикл for</title>
+    <script>
+        let numbers = [1, 9, 2, 5, 10, 4];
+        let total = 0;
+
+        for (let i=0; i<numbers.length; i++) {
+            if (numbers[i] % 2 === 0) {
+                total += numbers[i];
+            }
+        }
+
+        console.log("Сумма четных чисел в массиве равна " + total);
+
+        let students = ["Сергей", "Константин", "Валерий", "Алексей", "Дмитрий", "Александр", "Андрей"];
+        students.sort();
+        for (let i=0; i<students.length; i++) {
+            document.write(students[i] + "<br>");
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

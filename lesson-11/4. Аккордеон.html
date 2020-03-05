@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+    <title>Аккордеон</title>
+    <style>
+        html {
+            box-sizing: border-box;
+        }
+
+        *, *::before, *::after {
+            box-sizing: inherit;
+        }
+
+        .accordion {
+            width: 350px;
+            border: 1px solid #999;
+        }
+
+        .accordion__panel + .accordion__panel {
+            border-top: 1px solid #999;
+        }
+
+        .accordion__content {
+            background: #f1f1f1;
+            /*opacity: 0;*/
+            /*transition: 1s;*/
+            /*line-height: 0;*/
+            overflow: hidden;
+            padding: 10px 15px 30px;
+            display: none;
+        }
+
+        /*.accordion__content--visible {*/
+        /*    opacity: 1;*/
+        /*    padding: 10px 15px 30px;*/
+        /*    line-height: 1.4;*/
+        /*}*/
+
+        .accordion__title {
+            display: block;
+            width: 100%;
+            padding: 10px 25px;
+            background: #ccc;
+            color: #333;
+            border: 0;
+            font-family: inherit;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .accordion__title:hover {
+            background: #ccc;
+        }
+
+        .accordion__title:focus {
+            outline: 2px solid deepskyblue;
+        }
+    </style>
+
+</head>
+<body>
+	<div class="accordion">
+        <div class="accordion__panel">
+            <button class="accordion__title">Первый элемент аккордеона</button>
+            <div class="accordion__content">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic iusto laudantium numquam perferendis
+                porro quisquam rem, saepe totam ullam veritatis? Ad aliquid ea fuga itaque maiores, molestias
+                omnis quo totam.
+            </div>
+        </div>
+        <div class="accordion__panel">
+            <button class="accordion__title">Вторая панель</button>
+            <div class="accordion__content">
+                Тут мгного другого текста. Hic iusto laudantium numquam perferendis
+                porro quisquam rem, saepe totam ullam veritatis? Ad aliquid ea fuga itaque maiores, molestias
+                omnis quo totam.
+            </div>
+        </div>
+        <div class="accordion__panel">
+            <button class="accordion__title">Третья панель</button>
+            <div class="accordion__content">
+                Тут мгного другого текста. Hic iusto laudantium numquam perferendis
+                porro quisquam rem, saepe totam ullam veritatis? Ad aliquid ea fuga itaque maiores, molestias
+                omnis quo totam.
+            </div>
+        </div>
+        <div class="accordion__panel">
+            <button class="accordion__title">Ещё один</button>
+            <div class="accordion__content">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic iusto laudantium numquam perferendis
+                porro quisquam rem, saepe totam ullam veritatis? Ad aliquid ea fuga itaque maiores, molestias
+                omnis quo totam.
+            </div>
+        </div>
+        <div class="accordion__panel">
+            <button class="accordion__title">И ещё панель</button>
+            <div class="accordion__content">
+                Тут мгного другого текста. Hic iusto laudantium numquam perferendis
+                porro quisquam rem, saepe totam ullam veritatis? Ad aliquid ea fuga itaque maiores, molestias
+                omnis quo totam.
+            </div>
+        </div>
+        <div class="accordion__panel">
+            <button class="accordion__title">Третья панель</button>
+            <div class="accordion__content">
+                Тут мгного другого текста. Hic iusto laudantium numquam perferendis
+                porro quisquam rem, saepe totam ullam veritatis? Ad aliquid ea fuga itaque maiores, molestias
+                omnis quo totam.
+            </div>
+        </div>
+    </div>
+
+    <script src="jquery-3.4.1.min.js"></script>
+
+    <script>
+
+        $(function () {
+
+            $('.accordion__title').click(function () {
+                const content = $(this).next();
+                $('.accordion__content').not(content).slideUp();
+                content.slideToggle();
+            })
+
+        })
+
+    </script>
+
+
+</body>
+</html>

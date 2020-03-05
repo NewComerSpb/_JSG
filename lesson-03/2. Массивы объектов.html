@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script>
+
+        let students = [
+            { name: 'Ivan', age: 17 },
+            { name: 'Svetlana', age: 18 },
+            { name: 'Maria', age: 17 },
+            { name: 'Serg', age: 16 },
+
+        ];
+
+        console.log(students[2].age);
+        document.write('<ul>');
+
+        for (let i = 0; i < students.length; i++) {
+            document.write('<li> Имя: ' + students[i].name + ' возраст ' + students[i].age + '</li>');
+
+        }
+
+        document.write('</ul>');
+
+        let age = Number(prompt('Введите возраст студентов'));
+        //console.log('Введенный возраст: ' + age);
+        document.write('Введенный возраст: ' + age + '<br>');
+
+        let tableHtml = '<table border="1"><tr><th>Имя</th><th>Возраст</th></tr>';
+
+        for (let i = 0; i < students.length; i++) {
+
+
+            if (age === students[i].age || age === 0) {
+                tableHtml += '<tr>';
+                tableHtml += '<td>' + students[i].name + '</td>';
+                tableHtml += '<td>' + students[i].age + '</td>';
+                tableHtml += '<tr>';
+            }
+        }
+        tableHtml += '</table>';
+        document.write(tableHtml);
+
+
+    </script>
+
+
+</head>
+
+<body>
+
+
+</body>
+
+</html>

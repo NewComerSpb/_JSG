@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Калькулятор</title>
+</head>
+<body>
+    <div id="app">
+        <h1>Калькулятор валют</h1>
+        <input v-model="amount" type="number">
+        <select v-model="currency">
+            <option value="">- Не выбрана -</option>
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+<!--            <option value="JPY">JPY</option>-->
+<!--            <option v-for="item in currencies" :value="item.CharCode">{{ item.CharCode }}</option>-->
+        </select>
+        <hr>
+        {{ result }} руб.
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        "use strict";
+        new Vue({
+            el: "#app",
+            data: {
+                amount: 0,
+                currency: "",
+                currencies: {},
+            },
+            // эта функция вызывается автоматически, когда вью инициализирован
+            created() {
+                axios.get("https://www.cbr-xml-daily.ru/daily_json.js")
+                    .then(response => {
+                       this.currencies = response.data.Valute;
+                    });
+            },
+            computed: {
+                result() {
+                    if (this.currency === "") {
+                        return 0;
+                    }
+                    return this.currencies[this.currency].Value * this.amount;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

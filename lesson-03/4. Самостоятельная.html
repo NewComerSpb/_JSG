@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script>
+
+        let students = [
+            { name: 'Ivan', age: 17, sex: 'M' },
+            { name: 'Svetlana', age: 18, sex: 'F' },
+            { name: 'Maria', age: 17, sex: 'F' },
+            { name: 'Serg', age: 16, sex: 'M' },
+
+        ];
+
+        // console.log(students[2].age);
+        // document.write('<ul>');
+
+        // for (let i = 0; i < students.length; i++) {
+        //     document.write('<li> Имя: ' + students[i].name + ' возраст ' + students[i].age + '</li>');
+
+        // }
+
+        // document.write('</ul>');
+
+        // let age = Number(prompt('Введите возраст студентов'));
+        // //console.log('Введенный возраст: ' + age);
+        // document.write('Введенный возраст: ' + age + '<br>');
+
+        let tableHtml = '<table border="1"><tr><th>Имя</th><th>Возраст</th><th>Пол</th></tr>';
+        let countF = 0;
+        let sumF = 0;     
+        for (let i = 0; i < students.length; i++) {
+
+
+           
+                tableHtml += '<tr>';
+                tableHtml += '<td>' + students[i].name + '</td>';
+                tableHtml += '<td>' + students[i].age + '</td>';
+                if (students[i].sex==='F') {
+                    tableHtml += '<td>' + 'жен.' + '</td>';
+                    countF += 1;
+                    sumF = sumF + students[i].age;
+                } else {
+                    tableHtml += '<td>' + 'муж.' + '</td>';
+                }
+               
+                tableHtml += '<tr>';
+            
+        }
+        tableHtml += '</table>';
+        document.write(tableHtml) + '<br> <br>';
+
+
+
+        document.write('Средний возраст девушек: ' + (countF===0 ? "нет девушек" : sumF/countF));
+
+
+    </script>
+
+
+</head>
+
+<body>
+
+
+</body>
+
+</html>

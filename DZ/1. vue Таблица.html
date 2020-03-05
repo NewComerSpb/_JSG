@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>v-for</title>
+    <style>
+        .userTable {
+            border: 1px solid;
+            border-collapse: collapse;
+        }
+        tr, th, td {
+            border: 1px solid;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <label for="username">Имя пользователя</label>
+    <input v-model="userName" type="text" id="username">
+    <label for="age">Возраст</label>
+    <input v-model.number="userAge" type="number" id="age">
+    <button @click="addUser">Добавить</button>
+    <hr>
+    <table class="userTable">
+        <caption>Список сотрудников</caption>
+        <thead>
+            <tr>
+               <th>Имя</th>
+               <th>Воззраст</th>
+            </tr>
+        <thead>
+        <tbody>
+            <tr v-for="user of users">
+                <td>{{user.name}}</td>
+                <td>{{user.age}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<!-- development version, includes helpful console warnings -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+
+
+        new Vue({
+            el: "#app",
+            data: {
+                users: [
+                    { name: "John Doe", age: 25 },
+                    { name: "Samantha Smith", age: 32 },
+                    { name: "Peter Black", age: 15 },
+                    { name: "Martha Green", age: 22 }
+                ],
+                userName: '',
+                userAge: 0
+            },
+            methods: {
+                addUser: function() {
+                     this.users.push({name:this.userName, age:this.userAge});
+                    // const user = {};
+                    // user['name'] = this.userName;
+                    // user['age'] = this.userAge;
+                    // this.users.push(user);
+
+                    this.userName = "";
+                    this.userAge = 0;
+                },
+            },
+        });
+    });
+</script>
+</body>
+</html>

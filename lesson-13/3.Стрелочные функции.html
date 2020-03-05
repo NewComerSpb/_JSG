@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        'use strict';
+        const pow = (n,p) => Math.pow(n,p);
+
+        const fn1 = x => x*x;
+        const fn2 = (x) => x*x;
+        alert(pow(5,3));
+
+        document.addEventListener('DOMContentLoaded',() => {
+            const btn = document.querySelector('button');
+            // console.log(btn);
+            btn.addEventListener('click', function(){
+                this.style.color = "red";
+                setTimeout(()=>{
+                    this.style.color = null;
+                }, 500);
+            });
+        })
+
+
+    </script>
+</head>
+<body>
+<button>Это кнопка</button>
+</body>
+</html>

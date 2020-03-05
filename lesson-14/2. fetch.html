@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX</title>
+    <script>
+        "use strict";
+        document.addEventListener("DOMContentLoaded", () => {
+            const load = document.querySelector("#load");
+            const result = document.querySelector("#result");
+
+            load.addEventListener("click", () => {
+                // функция fetch выполняет запрос на получение данных по указанному адресу
+                fetch("https://www.cbr-xml-daily.ru/daily_json.js")
+                    .then(response => response.json())
+                    .then(data => {
+                        // данные будут доступны только здесь
+                        console.log("2");
+                        result.innerHTML = `Курс доллара ${data.Valute.USD.Value} руб.`;
+                    });
+
+                console.log("1")
+            });
+        });
+    </script>
+</head>
+<body>
+    <button id="load">Загрузить</button>
+    <div id="result"></div>
+</body>
+</html>

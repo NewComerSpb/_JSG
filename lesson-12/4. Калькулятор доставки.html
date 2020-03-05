@@ -1,0 +1,59 @@
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #result {
+            border: 2px solid;
+            padding: 15px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <h1>Рассчитай цену доставки</h1>
+    <select v-model = 'tax'>
+        <option value="">- не выбрано -</option>
+        <option value="200">Санкт-Петербург</option>
+        <option value="300">Москва</option>
+        <option value="240">Другие города</option>
+    </select>
+
+    <input v-model ='weight' type="number" placeholder="Введите вес">
+    <input v-model = 'discount' id="discount" type="checkbox">
+    <label for="discount">Скидка постоянному покупателю</label>
+
+    <div v-if ='price>0' id="result">
+        {{price}}
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+        new Vue({
+            el: '#app',
+            data: {
+                tax: '',
+                weight: 0,
+                discount: false,
+            },
+            methods: {
+            },
+            computed: {
+                price: function () {
+                    let total  = this.tax*this.weight;
+                    if (this.discount) {
+                        total *= 0.9;
+                    }
+                    return total;
+                }
+            }
+        });
+
+    })
+
+    </script>
+</body>
+</html>

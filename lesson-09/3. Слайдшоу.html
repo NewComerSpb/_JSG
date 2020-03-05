@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ru">
+<head>
+	<title>Слайдшоу</title>
+	<meta charset="utf-8" />
+	<script>
+        window.addEventListener("load", function() {
+            const slides = document.querySelectorAll(".slide");
+            let current = 0;
+
+            const nextSlide = function() {
+                slides[current].classList.add("slide-visible");
+                current++;
+
+                if (current > slides.length - 1) {
+                    clearInterval(timer);
+                }
+            };
+            nextSlide();
+
+            const timer = setInterval(nextSlide, 3500);
+        });
+	</script>
+	<style>
+		#slides {
+			overflow: hidden;
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+		}
+
+		.slide {
+			box-sizing: border-box;
+
+			position: absolute;
+			top: 0;
+			left: -100%;
+			width: 100%;
+			height: 100%;
+
+			font-size: 30px;
+			padding: 30% 20%;
+
+			line-height: 1.2;
+
+			transition: 1.5s;
+		}
+
+		.slide b {
+			font-size: 60px;
+		}
+
+		.slide-black {
+			background: #050505;
+			color: #f9f9f9;
+			left: 0;
+			top: -200%;
+		}
+
+		.slide-white {
+			background: #fff;
+			text-align: right;
+		}
+
+		.slide-gray {
+			background: #aaa;
+			text-align: center;
+			padding-top: 20%;
+		}
+
+		.slide-red {
+			background: red;
+			left: 0;
+			top: -200%;
+			color: yellow;
+		}
+
+		.slide-visible {
+			top: 0;
+			left: 0;
+		}
+	</style>
+
+</head>
+<body>
+	<div id="slides">
+		<div class="slide slide-black">
+			Есть люди, которые несут <br /> <b>тьму, мрак и хаос</b>.
+		</div>
+		<div class="slide slide-white">
+			Есть люди, которые несут в этот мир <br /> <b>любовь, тепло и свет</b>.
+		</div>
+		<div class="slide slide-gray">
+			<b>И есть я.</b>
+		</div>
+		<div class="slide slide-red">
+			<b>Я несу пакетик.</b>
+		</div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Интервал</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #222;
+            color: #ff0;
+            font-size: 90px;
+        }
+
+        .boom {
+            animation: 1s boomFrames forwards;
+        }
+
+        @keyframes boomFrames {
+            20% { transform: scale(4) }
+            50% { transform: translateX(-100%) scale(4); }
+            60% { transform: translateX(30%); }
+            70% { background: red }
+            100% { opacity: 0 }
+        }
+    </style>
+    <script>
+        window.addEventListener("load", function() {
+            let counter = 10;
+            const timer = setInterval(function() {
+                document.body.innerHTML = counter;
+
+                if (counter === 0) {
+                    clearInterval(timer);
+                    document.body.classList.add("boom");
+                }
+                counter--;
+                console.log(counter);
+            }, 300);
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

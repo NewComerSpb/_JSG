@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="tabs">
+
+    <button @click = 'setTab("description")'>Описание</button>
+    <button @click = 'setTab("params")'>Характеристики</button>
+    <button @click = 'setTab("reviews")'>Отзывы</button>
+    <hr>
+
+    <div v-if = 'isTab("description")'>
+        <h2>Описание товара</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto aspernatur commodi consequuntur corporis cumque doloremque, doloribus ea eaque fugiat ipsam iste nam, non quasi quia quidem quo sequi suscipit voluptate?</p>
+    </div>
+
+    <div v-if = 'isTab("params")'>
+        <h2>Характеристики товара</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto aspernatur commodi consequuntur corporis cumque doloremque, doloribus ea eaque fugiat ipsam iste nam, non quasi quia quidem quo sequi suscipit voluptate?</p>
+    </div>
+
+    <div v-if = 'isTab("reviews")'>
+        <h2>Отзывы от товаре</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto aspernatur commodi consequuntur corporis cumque doloremque, doloribus ea eaque fugiat ipsam iste nam, non quasi quia quidem quo sequi suscipit voluptate?</p>
+    </div>
+
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+        new Vue({
+            el: '#tabs',
+            data: {
+                tab: 'description',
+            },
+            methods: {
+                isTab: function(name) {
+                    return this.tab === name;
+                },
+                setTab: function(name) {
+                    if (this.isTab(name)) {
+                        this.tab  = '';
+                    }
+                    else {
+                        this.tab = name;
+                    }
+
+                },
+            }
+        });
+
+    })
+
+
+</script>
+
+
+
+</body>
+</html>

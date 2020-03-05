@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Самостоятельная работа</title>
+
+    <script>
+
+        let currRow = {
+            name: '',
+            age: '',
+            gender: '',
+            nationality: ''
+        };
+
+        let arrayOfRows = [];
+
+        window.onload = function () {
+
+            function setRowOption (optionName, optionValue) {
+                currRow[optionName] = optionValue;
+            }
+            function inputHandler()  {
+                setRowOption(this.className,this.value);
+            }
+
+
+            let nametxt = document.querySelector('#name');
+            let agetxt = document.querySelector('#age');
+            let selectTxt = document.querySelector('#nationality');
+
+            nametxt.onchange = inputHandler;
+            agetxt.onchange = inputHandler;
+            selectTxt.onchange = inputHandler;
+
+            let radioButtons = document.querySelectorAll("[name='genderSelect']");
+            for (let i=0; i<radioButtons.length; i++) {
+                radioButtons[i].onchange = inputHandler;
+            }
+
+            let table =  document.querySelector('table');
+
+            let btn = document.querySelector('button');
+            btn.onclick = function () {
+
+                arrayOfRows.push(currRow);
+
+                let headTable = "<table border=\"1\">\n" +
+                    "    <tr>\n" +
+                    "        <th>Имя</th>\n" +
+                    "        <th>Возраст</th>\n" +
+                    "        <th>Пол</th>\n" +
+                    "        <th>Гражданство</th>\n" +
+                    "    </tr>\n"
+
+                table.innerHTML = headTable;
+
+                for (let i=0; i<arrayOfRows.length; i++) {
+                    let currObj = arrayOfRows[i];
+                    let currTxt = "<tr>" +"<td>" + currObj.name + "</td>" + "<td>" + currObj.age + "</td>" + "<td>" + currObj.gender + "</td>" + "</td>" + "<td>" + currObj.nationality + "</td>" + "</tr>"
+                }
+
+            }
+
+
+        }
+
+    </script>
+
+
+</head>
+<body>
+
+<div>
+    <label for="name">Имя</label>
+    <input type="text" id="name" class="name">
+</div>
+<br>
+<div>
+    <label for="age">Возраст</label>
+    <input type="text" id="age" class="age">
+</div>
+
+<input name="genderSelect" type="radio" id="radio-1" value="муж" class="gender">
+<label for="radio-1">Муж</label>
+
+<input name="genderSelect" type="radio" id="radio-2" value="жен" class="gender">
+<label for="radio-2">Жен</label>
+
+<select name="" id="nationality" class="nationality">
+
+    <option value="">- не выбран</option>
+    <option value="Россия">Россия</option>
+    <option value="СНГ (кроме России)">СНГ (кроме России)</option>
+    <option value="Евросоюз">Евросоюз</option>
+    <option value="Прочие страны">Прочие страны</option>
+
+</select>
+
+<button>Добавить</button>
+<br>
+
+<table border="1">
+    <tr>
+        <th>Имя</th>
+        <th>Возраст</th>
+        <th>Пол</th>
+        <th>Гражданство</th>
+    </tr>
+</table>
+
+</body>
+</html>

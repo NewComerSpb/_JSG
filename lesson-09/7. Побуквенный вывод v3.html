@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<title>вывод текста с интервалом</title>
+	<meta charset="utf-8" />
+	<script>
+
+	</script>
+	<style>
+
+        body {
+            background: #222;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+		#text {
+            font-size: 36px;
+            font-family: Arial, sans-serif;
+            color: #fff;
+            width: 100%;
+            text-align: center;
+		}
+
+        #text span {
+            animation: 0.3s letters 20;
+            /* transform не работает со строчными элементами */
+            display: inline-block;
+            min-width: 8px;
+            /*opacity: 0;*/
+        }
+
+		#text::after {
+			content: '';
+			display: inline-block;
+			border-right: 0.1em solid;
+			height: 1em;
+			vertical-align: middle;
+			margin-left: 0.15em;
+			animation: 1s blink infinite;
+		}
+
+		@keyframes blink {
+			0% { opacity: 1; }
+			100% { opacity: 0; }
+		}
+
+        @keyframes letters {
+            0% { transform: translateY(-400%); }
+            /*50% { transform: translateY(-35%); }*/
+            /*60% { transform: rotate(360deg)  translateY(0); }*/
+            50% { transform:  translateY(400%); }
+            90% { transform:  translateY(0);  }
+        }
+
+
+        /*@keyframes letters {*/
+        /*    100% {opacity: 1;}*/
+        /*}*/
+	</style>
+</head>
+<body>
+<div id="text">Это текст, который <strong>нужно</strong> будет вывести побуквенно (с интервалом)</div>
+</body>
+</html>

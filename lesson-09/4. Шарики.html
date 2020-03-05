@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.circle {
+			border-radius: 50%;
+			position: absolute;
+			animation: scale 2.4s infinite;
+            transition: 0.5s;
+		}
+
+		.container {
+			position: relative;
+			z-index: 1;
+			background: rgba(255,255,255,0.9);
+			width: 400px;
+			padding: 40px 60px;
+			color: #999;
+			margin: 100px auto 0;
+			box-shadow: 0 0 10px rgba(0,0,0,0.2);
+		}
+
+		h1 {
+			font-size: 64px;
+		}
+
+		@keyframes scale {
+			0% {
+				transform: scale(0.2);
+			}
+			80% {
+				transform: scale(1) ;
+				opacity: 0.7;
+			}
+            100% {
+                top: 40%;
+                left: 50%;
+            }
+		}
+
+	</style>
+	<script>
+        window.addEventListener("load", function() {
+            const MAX_COUNT = 150;
+            const MAX_SIZE = 80;
+            const MIN_SIZE = 20;
+            const midX = window.innerWidth / 2;
+            const midY = window.innerHeight / 2;
+
+            let i = 1;
+            const circles = [];
+
+            const timer = setInterval(function() {
+                const div = document.createElement("DIV");
+                const size = Math.random() * (MAX_SIZE - MIN_SIZE + 1) + MIN_SIZE;
+                const top = Math.random() * (window.innerHeight - size);
+                const left = Math.random() * (window.innerWidth - size);
+
+                const r = Math.floor(Math.random() * 256);
+                const g = Math.floor(Math.random() * 256);
+                const b = Math.floor(Math.random() * 256);
+                const dur = Math.random() * 2 + 0.5;
+                const repeat = Math.floor(Math.random() * 5 + 1);
+
+                div.style.width = `${size}px`;
+                div.style.height = `${size}px`;
+                div.style.background = `rgb(${r},${g},${b})`;
+                div.style.top = `${top}px`;
+                div.style.left = `${left}px`;
+                div.style.animationDuration = `${dur}s`;
+                div.style.animationIterationCount = repeat;
+                div.className = "circle";
+                // каждый из элементов кладём в массив, чтобы потом не искать
+                circles.push(div);
+
+                document.body.appendChild(div);
+                i++;
+                if (i === MAX_COUNT) {
+                    clearInterval(timer);
+                    div.addEventListener("animationend", function() {
+                        for (let i=0; i<circles.length; i++) {
+                            const x = parseFloat(circles[i].style.left);
+                            const y = parseFloat(circles[i].style.top);
+
+                            circles[i].style.transform = "scale(0)";
+                            circles[i].style.animation = "none";
+
+                            if (x < midX) {
+                                circles[i].style.left = 0;
+                                if (y < midY) {
+                                    circles[i].style.top = 0;
+                                } else {
+                                    circles[i].style.top = `calc(100% - ${MAX_SIZE}px)`;
+                                }
+                            } else {
+                                circles[i].style.left = `calc(100% - ${MAX_SIZE}px)`;
+                                if (y < midY) {
+                                    circles[i].style.top = `calc(100% - ${MAX_SIZE}px)`;
+                                } else {
+                                    circles[i].style.top = 0;
+                                }
+                            }
+                        }
+                    });
+                }
+            }, 50)
+        });
+	</script>
+</head>
+<body>
+	<div class="container">
+		<h1>Title goes here</h1>
+		<p>Welcome on our super website</p>
+	</div>
+</body>
+</html>

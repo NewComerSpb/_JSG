@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+        'use strict';
+
+        const user = {
+            name: 'John',
+            greeting: function () {
+                alert(this.name);
+            }
+        };
+
+        user.greeting();
+
+
+
+        const  user2 = Object.create(user);
+        console.log(user, user2);
+    </script>
+
+
+</head>
+<body>
+
+</body>
+</html>

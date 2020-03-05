@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<title>вывод текста с интервалом</title>
+	<meta charset="utf-8" />
+	<script>
+
+	</script>
+	<style>
+		#text {
+			opacity: 0;
+			white-space: pre;
+		}
+
+		#text::after {
+			content: '';
+			display: inline-block;
+			border-right: 10px solid;
+			height: 16px;
+			vertical-align: middle;
+			margin-left: 2px;
+			animation: 1s blink infinite;
+		}
+
+		@keyframes blink {
+			0% { opacity: 1; }
+			100% { opacity: 0; }
+		}
+
+		body {
+			background: #000;
+			color: #0f0;
+			font-family: monospace;
+			font-size: 18px;
+			padding: 15px;
+			letter-spacing: 2px;
+		}
+	</style>
+</head>
+<body>
+<div id="text">Wake up, Neo! Follow the white rabbit. Sleeping is for weak people.</div>
+</body>
+</html>

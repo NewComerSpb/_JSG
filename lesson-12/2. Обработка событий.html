@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .error {
+            color: red;
+            border: 1px solid;
+            padding: 15px;
+        }
+    </style>
+
+</head>
+<body>
+
+<div id="app">
+    <button @click = 'dec'>-</button>
+    {{counter}}
+    <button @click = 'inc'>+</button>
+
+    <p class="error" v-if = 'message !== ""'>{{message}}</p>
+
+</div>
+
+<!--Обработчики событий-->
+
+<!-- v-on:event = 'Handler'   v-on = @ -->
+
+<!--2. Реактивное обновление интерфейса-->
+<!--3. компонентный подбор-->
+
+
+<!-- development version, includes helpful console warnings -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const app = new Vue({
+            el: '#app',
+            data: {
+                counter: 0,
+                message: '',
+            },
+            methods: {
+                inc: function () {
+                    if(this.counter < 20) {
+                        this.counter ++;
+                        this.message = "";
+                    } else {
+                        this.message = 'Максимальное значение - 20';
+                    }
+                },
+                dec: function () {
+                    if (this.counter > 0) {
+                        this.counter--;
+                        this.message = "";
+
+                    } else {
+                        this.message = 'Минимальное значение - 0';
+
+                    }
+                }
+            }
+        });
+
+
+    })
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+        window.onload = function () {
+            let colorSelect = document.querySelector('#colors');
+            let changeColorBtn = document.querySelector('#changeColor');
+
+            changeColorBtn.onclick = function () {
+                document.body.style.background = colorSelect.value;
+                //alert(colorSelect.value)
+            }
+
+            colorSelect.onchange = changeColorBtn.onclick;
+
+        }
+
+    </script>
+
+</head>
+<body>
+<select name="" id="colors">
+
+    <option value="">- не выбран</option>
+    <option value="#f00">Красный</option>
+    <option value="#00f">Синий</option>
+    <option value="#0a0">Зеленый</option>
+
+</select>
+<button id="changeColor">Изменить</button>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX</title>
+    <script>
+        "use strict";
+        document.addEventListener("DOMContentLoaded", () => {
+            const load = document.querySelector("#load");
+            const result = document.querySelector("#result");
+
+            load.addEventListener("click", () => {
+                // этот объект позволяет отправлять запросы на сервер
+                const xhr = new XMLHttpRequest();
+                // выполняем предварительную настройку объекта
+                // указываем тип запроса и адрес
+                xhr.open("GET", "https://www.cbr-xml-daily.ru/daily_json.js");
+                // отправляем запрос
+                xhr.send();
+
+                // этот обработчик будет вызван в тот момент, когда придёт ответ на запрос
+                xhr.onload = () => {
+                    // в свойстве responseText хранится текст ответа сервера
+                    // alert(xhr.responseText);
+                    // метод JSON.parse преобразует текст в формате JSON
+                    // в объект
+                    const data = JSON.parse(xhr.responseText);
+                    // console.log(data.Valute.USD.Value);
+                    result.innerHTML = `Курс доллара ${data.Valute.USD.Value} руб.`;
+                };
+            });
+        });
+    </script>
+</head>
+<body>
+    <button id="load">Загрузить</button>
+    <div id="result"></div>
+</body>
+</html>

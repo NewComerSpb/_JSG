@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Массивы</title>
+    <script>
+        let students = ["Сергей", "Константин", "Валерий", "Алексей", "Дмитрий", "Александр", "Андрей"];
+        // console.log(students[2]);
+        // console.log(students);
+        // вывод в виде таблицы
+        // console.table(students);
+
+        // сортируем студентов по алфавиту
+        students.sort();
+        // console.table(students);
+
+        students.reverse();
+        console.table(students);
+
+        let day = prompt("Введите день");
+        let month = prompt("Введите месяц");
+        let daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        let daysCount = daysInMonth[month - 1];
+
+        if (day > 0 && day <= daysCount) {
+            alert("Дата корректна");
+        } else {
+            alert("Ошибка в дате");
+        }
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

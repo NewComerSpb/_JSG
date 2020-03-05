@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Самостоятельная работа</title>
+
+    <style>
+        .form-group {
+            margin-bottom: 15px;
+        }
+    </style>
+
+    <script>
+
+        let nametxt;
+        let agetxt;
+        let selectTxt;
+        let sexOptionMale;
+        let sexOptionFemale;
+        let btn;
+
+
+        let currRow = {
+            name: '',
+            age: '',
+            gender: '',
+            nationality: ''
+        };
+
+        let arrayOfRows = [];
+
+        function setRowOption (optionName, optionValue) {
+            currRow[optionName] = optionValue;
+        }
+
+        function inputHandler()  {
+            setRowOption(this.className,this.value);
+        }
+
+        function outputEnabled()
+        {
+            let result = false;
+
+            if (arrayOfRows.length > 0)
+            {
+                result = true;
+            }
+
+            return result;
+        }
+
+        function buttonHandler()
+        {
+
+            if (!outputEnabled())
+            {
+                return;
+            }
+
+            arrayOfRows.push(currRow);
+
+            let headTable = "    <tr>\n" +
+                "        <th>Имя</th>\n" +
+                "        <th>Возраст</th>\n" +
+                "        <th>Пол</th>\n" +
+                "        <th>Гражданство</th>\n" +
+                "    </tr>\n"
+
+            let table =  document.querySelector('table');
+            table.innerHTML = headTable;
+
+            for (let i=0; i<arrayOfRows.length; i++)
+            {
+                let currObj = arrayOfRows[i];
+                let currTxt = "<tr>" +"<td>" + currObj.name + "</td>" + "<td>" + currObj.age + "</td>" + "<td>" + currObj.gender + "</td>"  + "<td>" + currObj.nationality + "</td>" + "</tr>"
+                table.innerHTML = table.innerHTML +  currTxt;
+            }
+
+        }
+
+        window.onload = function ()
+        {
+
+            nametxt = document.querySelector('#name');
+            agetxt = document.querySelector('#age');
+            selectTxt = document.querySelector('#nationality');
+            sexOptionMale = document.querySelector("#sex-m");
+            sexOptionFemale = document.querySelector("#sex-f");
+            btn = document.querySelector('button');
+
+            nametxt.onchange = inputHandler;
+            agetxt.onchange = inputHandler;
+            selectTxt.onchange = inputHandler;
+            sexOptionMale.onchange = inputHandler;
+            sexOptionFemale.onchange = inputHandler;
+            sexOptionMale.checked = true;
+
+            btn.onclick = buttonHandler;
+        }
+
+    </script>
+
+
+</head>
+<body>
+
+<div class="form-group">
+    <label for="name">
+        Имя <br>
+        <input type="text" id="name" class="name">
+    </label>
+</div>
+
+<div class="form-group">
+    <label for="age">
+        Возраст <br>
+        <input type="text" id="age" class="age">
+    </label>
+</div>
+
+<div class="form-group">
+    Пол <br>
+    <label for="sex-m">
+        <input name="genderSelect" type="radio" id="sex-m" value="муж" class="gender"> Мужской
+    </label>
+    <label for="sex-f">
+        <input name="genderSelect" type="radio" id="sex-f" value="жен" class="gender"> Женский
+    </label>
+</div>
+
+<div class="form-group">
+    Гражданство <br>
+    <label>
+        <select name="" id="nationality" class="nationality">
+            <option value="">- не выбран</option>
+            <option value="Россия">Россия</option>
+            <option value="СНГ (кроме России)">СНГ (кроме России)</option>
+            <option value="Евросоюз">Евросоюз</option>
+            <option value="Прочие страны">Прочие страны</option>
+        </select>
+    </label>
+</div>
+
+<div class="form-group">
+    <button>Добавить</button>
+</div>
+<hr>
+<br>
+
+<table border="1" id="outputTable">
+</table>
+
+</body>
+</html>

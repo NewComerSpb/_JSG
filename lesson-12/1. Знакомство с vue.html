@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <h1>{{ title }}</h1>
+    Счетчик: {{counter}}
+</div>
+
+<!--1. Декларативные шаблоны-->
+<!--2. Реактивное обновление интерфейса-->
+<!--3. компонентный подбор-->
+
+
+<!-- development version, includes helpful console warnings -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const app = new Vue({
+            el: '#app',
+            data: {
+                title: 'hello world',
+                counter: 0,
+            }
+        });
+
+        setInterval(function () {
+            app.counter++;
+            if(app.counter > 10){
+                app.title = 'Много насчитали';
+            }
+        }, 200)
+
+
+
+    })
+
+
+</script>
+
+</body>
+</html>

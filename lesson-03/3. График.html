@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Статистика продаж</title>
+    <style>
+        .stat {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            border: 2px solid;
+            padding: 15px;
+            margin: 50px auto 0;
+            width: 450px;
+        }
+
+        .stat__item {
+            width: 70px;
+        }
+
+        .stat__title {
+            padding: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .stat__value {
+            background: #0000bd;
+            transform: scaleY(0);
+            transform-origin: bottom;
+            animation: 1.5s growing 0.5s forwards;
+        }
+
+        @keyframes growing {
+            100% { transform: scaleY(1); }
+        }
+    </style>
+    <script>
+        let salesStat = [
+            { month: "март", sales: 200, },
+            { month: "апрель", sales: 480, },
+            { month: "май", sales: 160, },
+            { month: "июнь", sales: 515, }
+        ];
+
+document.write("<div class='stat'>");
+
+    // <div class='stat__item'>
+    //     <div class='stat__value' style='height:200px'></div>
+    //     <div class='stat__title'>Январь</div>
+    // </div>
+
+for (let el = 0; el < salesStat.length; el++ )
+{
+
+    html = "<div class='stat__item'>" +
+        "<div class='stat__value' style='height:" + salesStat[el].sales + "px'></div>" + 
+        "<div class='stat__title'>" + salesStat[el].month  + "</div>" +
+        "</div>";
+
+    document.write(html);    
+
+}
+
+
+
+document.write("</div>");
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

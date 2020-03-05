@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+
+        #message {
+            border: 2px solid;
+            padding: 25px;
+            margin: 15px 0;
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+
+<button id="show">Показать блок</button>
+<div id="message">
+    Какойто блок
+    <button id="hide">Скрыть</button>
+</div>
+
+
+<script src="jquery-3.4.1.js"></script>
+<script>
+
+    $(function () {
+
+        const $msg = $('#message');
+
+        $('#show').click(function () {
+            $msg.toggle(500);
+        })
+
+
+        // $('#hide').click(function () {
+        //     $('#message').slideUp();
+        // })
+
+        $('#hide').click(function () {
+            $msg.fadeOut();
+        })
+
+
+    })
+
+</script>
+
+
+</body>
+</html>

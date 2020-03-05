@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<title>вывод текста с интервалом</title>
+	<meta charset="utf-8" />
+	<script>
+
+	</script>
+	<style>
+		#text {
+			/*opacity: 0;*/
+		}
+
+		#text::after {
+			content: '';
+			display: inline-block;
+			border-right: 1px solid #111;
+			height: 16px;
+			vertical-align: middle;
+			margin-left: 2px;
+			animation: 1s blink infinite;
+		}
+
+		@keyframes blink {
+			0% { opacity: 1; }
+			100% { opacity: 0; }
+		}
+	</style>
+</head>
+<body>
+<div id="text">Это текст, который <strong>нужно</strong> будет вывести побуквенно (с интервалом)</div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./fancybox/jquery.fancybox.css">
+</head>
+<body>
+
+<a class = 'image-link' title="Подпись к картинке внизу" href="./photos/1.jpg">
+    <img src="./photos/1_sm.jpg" alt="">
+</a>
+
+<script src="jquery-3.4.1.min.js"></script>
+<script src="./fancybox/jquery.fancybox.pack.js"></script>
+
+<script>
+
+    $(function () {
+
+        $('.image-link').fancybox({
+            maxWidth: 450,
+            openEffect: 'elastic',
+            closeEffect: 'elastic'
+        });
+
+    })
+
+</script>
+
+
+
+
+</body>
+</html>

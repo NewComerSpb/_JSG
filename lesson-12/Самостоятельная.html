@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .row {
+            display: flex;
+        }
+        #result {
+            border: 2px solid;
+            padding: 15px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <h1>МегаКалькулятор</h1>
+    <div class="row">
+        <input v-model ='leftInput' type="number">
+        <select v-model = 'operation'>
+            <option value="">- не выбрано -</option>
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        <input v-model ='rightInput' type="number">
+    </div>
+
+    <div  id="result">
+        {{result}}
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+        new Vue({
+            el: '#app',
+            data: {
+                operation: '',
+                leftInput: 0,
+                rightInput: 0,
+            },
+            methods: {
+            },
+            computed: {
+                result: function () {
+                    if (this.operation !== '') {
+                       if (this.operation === '+') {return Number(this.leftInput) + Number(this.rightInput)};
+                        if (this.operation === '-') {return this.leftInput - this.rightInput}
+                        if (this.operation === '*') {return this.leftInput * this.rightInput}
+                        if (this.operation === '/') {return this.leftInput / this.rightInput}
+                    }
+
+                }
+            }
+        });
+
+    })
+
+</script>
+</body>
+</html>
+
+
+</body>
+</html>
