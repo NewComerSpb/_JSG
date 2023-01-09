@@ -12,6 +12,6 @@
   "dependencies": {
     "axios": "^0.19.2",
     "faker": "^4.1.0",
-    "luxon": "^1.22.0"
+    "luxon": "^2.5.2"
   }
 }
